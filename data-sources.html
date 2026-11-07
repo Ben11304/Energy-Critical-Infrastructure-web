@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Data Sources — Energy Critical Infrastructure</title>
+  <title>Data Sources — Energy Infrastructure Exposure Atlas</title>
   <link rel="stylesheet" href="./static/css/atlas-b.css?v=20260604-b">
   <style>
     .src-wrap{max-width:1080px;margin:0 auto;padding:56px;}
@@ -27,43 +27,34 @@
     .references-list a:hover{border-bottom-color:var(--ink);}
     @media (max-width:760px){.src-wrap{padding:36px 22px;}.data-table{font-size:12.5px;}}
   </style>
+<link rel="stylesheet" href="static/css/site.css?v=20261107-refined">
 </head>
 <body>
 
-  <header class="hdr">
-    <div class="brand">
-      <div class="nm">Energy Critical Infrastructure</div>
-    </div>
-    <nav class="nav">
-      <a href="index.html">Maps</a>
-      <a href="data-sources.html" class="active">Sources</a>
-      <a href="https://github.com/ruoxinx/energy-infrastructure-risk" target="_blank" rel="noopener">Repository</a>
-    </nav>
-    <a href="map.html" class="cta">Open the map →</a>
-  </header>
+  <header class="atlas-header"><a class="atlas-brand" href="index.html">Energy Infrastructure Exposure Atlas</a><nav aria-label="Primary navigation"><a href="index.html">Home</a><a href="map.html">Maps</a><a href="research.html">The Study</a><a href="data-sources.html" aria-current="page">Data sources</a></nav></header>
 
   <main class="src-wrap">
     <div class="src-head">
-      <div class="eyebrow">Provenance · Full citations · 2026-06-04</div>
       <h1>Data sources</h1>
-      <p>All sources are publicly available from U.S. federal agencies or peer-reviewed open-data platforms. The current web revision renders the independently registered spatial-lag and Oaxaca-Blinder analytical outputs alongside the five-hazard exposure inventory.</p>
+      <p>Datasets used in the atlas. Original datasets retain their respective licenses.</p>
     </div>
 
+    <div class="data-table-scroll" role="region" aria-label="Dataset details" tabindex="0">
     <table class="data-table">
       <thead>
         <tr>
-          <th>Dataset</th>
-          <th>Description</th>
-          <th>Time period</th>
-          <th>Resolution</th>
-          <th>Source / DOI</th>
+          <th scope="col">Dataset</th>
+          <th scope="col">Description</th>
+          <th scope="col">Time period</th>
+          <th scope="col">Resolution</th>
+          <th scope="col">Source</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="dataset-name">Energy Assets<span class="ag">OpenStreetMap</span></td>
           <td>2,827,591 energy infrastructure assets (205,783 non-tower primary): towers, generators, substations, plants, lines, fuel stations.</td>
-          <td>Current (2024 extract)</td>
+          <td>2024 extract</td>
           <td>Point / Line / Polygon</td>
           <td><a href="https://www.openstreetmap.org" target="_blank" rel="noopener">openstreetmap.org</a> · ODbL license</td>
         </tr>
@@ -83,14 +74,14 @@
         </tr>
         <tr>
           <td class="dataset-name">Wildfire<span class="ag">USGS WFPI</span></td>
-          <td>Wildland Fire Potential Index: satellite-derived daily fire potential. P95 of daily rasters computed per pixel. Exposure threshold WFPI P95 ≥ 75.</td>
+          <td>Daily fire potential, summarized as the 95th percentile per pixel. Exposure threshold WFPI P95 ≥ 75.</td>
           <td>2008–2025 (daily)</td>
           <td>1 km</td>
           <td><a href="https://www.usgs.gov/fire-danger-forecast/wildland-fire-potential-index-wfpi" target="_blank" rel="noopener">USGS EROS</a>; Burgan et al. (1998) [4]</td>
         </tr>
         <tr>
           <td class="dataset-name">Hurricane<span class="ag">NOAA IBTrACS v04r01</span></td>
-          <td>International Best Track Archive: tropical cyclone tracks, wind speed, wind radii. Holland (1980) wind swath reconstruction. Exposure threshold ≥ 64 kt (Cat 1+).</td>
+          <td>Tropical cyclone tracks and wind radii with Holland (1980) wind-swath reconstruction. Exposure threshold ≥ 64 kt (Cat 1+).</td>
           <td>1842–2024 (183 years)</td>
           <td>6-hourly track points</td>
           <td>Knapp et al. (2010) [5]; <a href="https://www.ncei.noaa.gov/products/international-best-track-archive" target="_blank" rel="noopener">NCEI IBTrACS</a></td>
@@ -104,20 +95,21 @@
         </tr>
         <tr>
           <td class="dataset-name">Social Vulnerability<span class="ag">CDC/ATSDR SVI</span></td>
-          <td>Social Vulnerability Index: county-level percentile ranking across 4 themes (socioeconomic, household, minority, housing), used for the county layer and registered decomposition outputs.</td>
+          <td>County percentile rankings across four social vulnerability themes.</td>
           <td>2022</td>
           <td>County-level</td>
           <td><a href="https://www.atsdr.cdc.gov/placeandhealth/svi/" target="_blank" rel="noopener">CDC/ATSDR SVI 2022</a> [7]</td>
         </tr>
         <tr>
           <td class="dataset-name">Power Outage<span class="ag">DOE EAGLE-I</span></td>
-          <td>County-level power outage event counts and customer impacts at 15-min intervals. 2022 + 2024 used as response in spatial lag model (SLM).</td>
+          <td>County outage counts and customer impacts at 15-minute intervals; used in spatial lag analysis.</td>
           <td>2022, 2024</td>
           <td>County-level</td>
           <td>Tansakul et al. (2025) [8]; <a href="https://doi.org/10.13139/OLCF/2500278" target="_blank" rel="noopener">10.13139/OLCF/2500278</a></td>
         </tr>
       </tbody>
     </table>
+    </div>
 
     <div class="references-section">
       <h2>References</h2>
@@ -134,54 +126,15 @@
     </div>
   </main>
 
-  <footer class="foot">
-    <div>© 2026 ENERGY CRITICAL INFRASTRUCTURE · KENT STATE UNIVERSITY</div>
-    <div class="links">
-      <a href="index.html">Maps</a>
-      <a href="map.html">Map</a>
-      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>
-      <a href="https://github.com/ruoxinx/energy-infrastructure-risk" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </footer>
+  <footer class="atlas-footer">
+  <div class="footer-credits">
+    <p class="footer-copyright">© 2026 Energy Infrastructure Exposure Atlas</p>
+  </div>
+  <nav aria-label="Footer navigation">
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>
+  </nav>
+</footer>
 
 
-    <script>
-    // Static site: override view toggle to navigate to correct HTML file
-    (function() {
-        var viewMap = {
-            'btn-heatmap': 'map_heatmap.html',
-            'btn-hazard': 'map_hazard.html',
-            'btn-impact': 'map_impact.html',
-            'btn-energy-vulnerability': 'map_energy_vulnerability.html',
-            'btn-exposure': 'map_exposure.html',
-            'btn-energy-detail': 'map_energy_detail.html',
-            'btn-social-vulnerability': 'map_social_vulnerability.html',
-            'btn-analytics': 'map_analytics.html'
-        };
-        Object.keys(viewMap).forEach(function(btnId) {
-            var btn = document.getElementById(btnId);
-            if (btn) {
-                // Remove ALL existing click listeners by cloning
-                var newBtn = btn.cloneNode(true);
-                btn.parentNode.replaceChild(newBtn, btn);
-                // Add static site navigation
-                newBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var url = new URL(window.location);
-                    var params = new URLSearchParams(url.search);
-                    // Keep region and mode params, remove view-specific ones
-                    var keep = ['region', 'mode', 'division_type', 'show_background'];
-                    var newParams = new URLSearchParams();
-                    keep.forEach(function(k) {
-                        params.getAll(k).forEach(function(v) { newParams.append(k, v); });
-                    });
-                    window.location.href = viewMap[btnId] + '?' + newParams.toString();
-                });
-            }
-        });
-    })();
-    </script>
-    
-</body>
+    </body>
 </html>

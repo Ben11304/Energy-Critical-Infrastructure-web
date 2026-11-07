@@ -1,342 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Map Index · Energy Critical Infrastructure</title>
-  <link rel="stylesheet" href="./static/css/atlas-b.css?v=20260604-b">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · Energy Infrastructure Exposure Atlas</title>
+<meta name="description" content="Explore U.S. energy infrastructure exposure to five natural hazard indicators and county social vulnerability.">
+<link rel="stylesheet" href="static/css/site.css?v=20261107-refined">
 </head>
-<body class="map-index">
-
-  <header class="hdr">
-    <div class="brand">
-      <div class="nm">Energy Critical Infrastructure</div>
+<body class="atlas-page editorial-home">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="atlas-header">
+<a class="atlas-brand" href="index.html">Energy Infrastructure Exposure Atlas</a>
+<nav aria-label="Primary navigation">
+<a href="index.html" aria-current="page">Home</a>
+<a href="map.html">Maps</a>
+<a href="research.html">The Study</a>
+<a href="data-sources.html">Data sources</a>
+</nav>
+</header>
+<main id="main" class="atlas-main">
+  <section class="editorial-hero">
+    <div class="hero-copy">
+      <h1>Where energy infrastructure meets natural hazards.</h1>
+      <p class="lede">Explore U.S. energy infrastructure exposure and county social vulnerability.</p>
+      <p class="home-byline">Viet Huy Duong and Ruoxin Xiong &middot; Kent State University</p>
+      <a class="primary-link" href="map.html">Explore maps <img src="static/icons/arrow-right.svg" alt="" width="24" height="24"></a>
     </div>
-    <nav class="nav">
-      <a href="index.html" class="active">Maps</a>
-      <a href="data-sources.html">Sources</a>
-      <a href="https://github.com/ruoxinx/energy-infrastructure-risk" target="_blank" rel="noopener">Repository</a>
-    </nav>
-    <a href="#console" class="cta">Select a map ↓</a>
-  </header>
-
-  <section id="console">
-    <form action="map_hazard.html" id="main-form" method="GET">
-      <div class="console-grid">
-
-        <!-- MAP FAMILY -->
-        <div class="col-family">
-          <div class="col-head">
-            <span>I · Research family</span>
-            <span class="req">required</span>
-          </div>
-
-          <div class="map-families" role="tablist" aria-label="Analytical map families">
-            <button type="button" class="map-family sel" role="tab" aria-selected="true" data-map-family="hazard">
-              <span class="family-code">01</span><span><b>Hazard</b><small>Hazard surfaces and asset exposure</small></span><span>→</span>
-            </button>
-            <button type="button" class="map-family" role="tab" aria-selected="false" data-map-family="infrastructure">
-              <span class="family-code">02</span><span><b>Infrastructure</b><small>Asset distribution and network vulnerability</small></span><span>→</span>
-            </button>
-            <button type="button" class="map-family" role="tab" aria-selected="false" data-map-family="socioeconomic">
-              <span class="family-code">03</span><span><b>Socioeconomic &amp; outcomes</b><small>Social vulnerability, outages, and analytics</small></span><span>→</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- VIEW TYPE -->
-        <div class="col-view">
-          <div class="col-head">
-            <span>II · Analytical view</span>
-            <span id="family-count">03 views</span>
-          </div>
-
-          <div class="views-grid" id="views-grid">
-            <label class="view-card sel" data-family="hazard" data-value="hazard" data-target="map_hazard.html">
-              <input type="radio" name="view_type" value="hazard" checked>
-              <div class="plate"><span>View 01</span><span class="sel-mark">selected</span></div><div class="vt">Hazard layers</div><div class="vd">Examine modeled hazard intensity and extent.</div>
-            </label>
-            <label class="view-card" data-family="hazard" data-value="exposure" data-target="map_exposure.html">
-              <input type="radio" name="view_type" value="exposure"><div class="plate"><span>View 02</span><span class="sel-mark">selected</span></div><div class="vt">Asset exposure</div><div class="vd">Identify assets meeting hazard exposure criteria.</div>
-            </label>
-            <label class="view-card" data-family="hazard" data-value="heatmap" data-target="map_heatmap.html">
-              <input type="radio" name="view_type" value="heatmap"><div class="plate"><span>View 03</span><span class="sel-mark">selected</span></div><div class="vt">Infrastructure density</div><div class="vd">Inspect spatial concentration of energy assets.</div>
-            </label>
-            <label class="view-card" hidden data-family="infrastructure" data-value="energy_detail" data-target="map_energy_detail.html">
-              <input type="radio" name="view_type" value="energy_detail"><div class="plate"><span>View 04</span><span class="sel-mark">selected</span></div><div class="vt">Energy asset atlas</div><div class="vd">Inspect infrastructure type, sector, and location.</div>
-            </label>
-            <label class="view-card" hidden data-family="infrastructure" data-value="energy_vulnerability" data-target="map_energy_vulnerability.html">
-              <input type="radio" name="view_type" value="energy_vulnerability"><div class="plate"><span>View 05</span><span class="sel-mark">selected</span></div><div class="vt">Network vulnerability</div><div class="vd">Examine node-level network criticality.</div>
-            </label>
-            <label class="view-card" hidden data-family="socioeconomic" data-value="social_vulnerability" data-target="map_social_vulnerability.html">
-              <input type="radio" name="view_type" value="social_vulnerability"><div class="plate"><span>View 06</span><span class="sel-mark">selected</span></div><div class="vt">Social vulnerability</div><div class="vd">Compare county-level CDC/ATSDR SVI metrics.</div>
-            </label>
-            <label class="view-card" hidden data-family="socioeconomic" data-value="impact" data-target="map_impact.html">
-              <input type="radio" name="view_type" value="impact"><div class="plate"><span>View 07</span><span class="sel-mark">selected</span></div><div class="vt">Power outage outcomes</div><div class="vd">Inspect observed county-level outage records.</div>
-            </label>
-            <label class="view-card" hidden data-family="socioeconomic" data-value="analytics" data-target="map_analytics.html">
-              <input type="radio" name="view_type" value="analytics"><div class="plate"><span>View 08</span><span class="sel-mark">selected</span></div><div class="vt">Analytical results</div><div class="vd">Review aggregate statistical outputs and sensitivity.</div>
-            </label>
-          </div>
-        </div>
-
-        <!-- AREA + SUBMIT -->
-        <div class="col-area">
-          <div class="col-head"><span>III · Geographic scope</span><span class="req">required</span></div>
-
-          <div class="area-opts" id="area-opts">
-            <label class="area-opt sel" data-mode="entire">
-              <input type="radio" name="mode" value="entire" id="mode-entire" checked>
-              <span class="dot"></span>
-              <span>Entire United States</span>
-              <span class="desc">50 states</span>
-            </label>
-            <label class="area-opt" data-mode="select">
-              <input type="radio" name="mode" value="select" id="mode-select">
-              <span class="dot"></span>
-              <span>Specific states</span>
-              <span class="desc">Multi-select</span>
-            </label>
-          </div>
-
-          <div class="state-picker" id="states-container" style="display:none;">
-            <input type="text" id="state-search" placeholder="Search states…" autocomplete="off">
-            <div class="state-list" id="state-list"></div>
-            <div class="state-count">
-              <span id="selected-count">None selected</span>
-              <span><span id="total-count">50</span> available</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SUBMIT -->
-        <div class="col-config">
-          <div class="col-head">
-            <span>IV · Render</span>
-            <span class="req">ready</span>
-          </div>
-
-          <div class="config-panel">
-            <div class="detail-opts active">
-              <h3 id="selected-title">Hazard layers</h3>
-              <div class="sub" id="selected-sub">Examine modeled hazard intensity and extent.</div>
-
-              <div class="config-note">
-                Additional filters — sector, hazard type, asset types, color scale — are available on each map's side panel after it loads.
-              </div>
-
-              <div class="submit-row">
-                <button type="submit" class="submit-btn">
-                  <span>Render the map</span>
-                  <span class="arrow">→</span>
-                </button>
-                <div class="submit-note" id="submit-note">View 01 · Hazard layers</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </form>
+    <figure>
+      <a href="static/figures/inventory.png" target="_blank" rel="noopener" aria-label="View full-size county infrastructure inventory map">
+        <img src="static/figures/inventory.png" alt="County distribution of non-tower energy-infrastructure features, with Alaska and Hawaii insets and a logarithmic count legend." width="879" height="693">
+      </a>
+    </figure>
   </section>
-
-  <footer class="foot">
-    <div>© 2026 ENERGY CRITICAL INFRASTRUCTURE · KENT STATE UNIVERSITY</div>
-    <div class="links">
-      <a href="index.html">Maps</a>
-      <a href="data-sources.html">Full citations</a>
-      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>
-      <a href="https://github.com/ruoxinx/energy-infrastructure-risk" target="_blank" rel="noopener">GitHub</a>
+  <section class="content-section research-overview">
+    <h2>Study overview</h2>
+    <div>
+      <p>We map 205,783 non-tower energy-infrastructure features across 50 states and examine their exposure to five hazard indicators: earthquake shaking, flooding, wildfire potential, hurricane wind, and snowpack water equivalent.</p>
     </div>
-  </footer>
-
-  <script>
-  (function(){
-    // States from server-side context (Jinja) — works in both Flask and build_static
-    var STATES = [{"display": "Alabama", "folder": "alabama", "value": "alabama"}, {"display": "Alaska", "folder": "alaska", "value": "alaska"}, {"display": "Arizona", "folder": "arizona", "value": "arizona"}, {"display": "Arkansas", "folder": "arkansas", "value": "arkansas"}, {"display": "California", "folder": "california", "value": "california"}, {"display": "Colorado", "folder": "colorado", "value": "colorado"}, {"display": "Connecticut", "folder": "connecticut", "value": "connecticut"}, {"display": "Delaware", "folder": "delaware", "value": "delaware"}, {"display": "Florida", "folder": "florida", "value": "florida"}, {"display": "Georgia", "folder": "georgia", "value": "georgia"}, {"display": "Hawaii", "folder": "hawaii", "value": "hawaii"}, {"display": "Idaho", "folder": "idaho", "value": "idaho"}, {"display": "Illinois", "folder": "illinois", "value": "illinois"}, {"display": "Indiana", "folder": "indiana", "value": "indiana"}, {"display": "Iowa", "folder": "iowa", "value": "iowa"}, {"display": "Kansas", "folder": "kansas", "value": "kansas"}, {"display": "Kentucky", "folder": "kentucky", "value": "kentucky"}, {"display": "Louisiana", "folder": "louisiana", "value": "louisiana"}, {"display": "Maine", "folder": "maine", "value": "maine"}, {"display": "Maryland", "folder": "maryland", "value": "maryland"}, {"display": "Massachusetts", "folder": "massachusetts", "value": "massachusetts"}, {"display": "Michigan", "folder": "michigan", "value": "michigan"}, {"display": "Minnesota", "folder": "minnesota", "value": "minnesota"}, {"display": "Mississippi", "folder": "mississippi", "value": "mississippi"}, {"display": "Missouri", "folder": "missouri", "value": "missouri"}, {"display": "Montana", "folder": "montana", "value": "montana"}, {"display": "Nebraska", "folder": "nebraska", "value": "nebraska"}, {"display": "Nevada", "folder": "nevada", "value": "nevada"}, {"display": "New Hampshire", "folder": "new_hampshire", "value": "new_hampshire"}, {"display": "New Jersey", "folder": "new_jersey", "value": "new_jersey"}, {"display": "New Mexico", "folder": "new_mexico", "value": "new_mexico"}, {"display": "New York", "folder": "new_york", "value": "new_york"}, {"display": "North Carolina", "folder": "north_carolina", "value": "north_carolina"}, {"display": "North Dakota", "folder": "north_dakota", "value": "north_dakota"}, {"display": "Ohio", "folder": "ohio", "value": "ohio"}, {"display": "Oklahoma", "folder": "oklahoma", "value": "oklahoma"}, {"display": "Oregon", "folder": "oregon", "value": "oregon"}, {"display": "Pennsylvania", "folder": "pennsylvania", "value": "pennsylvania"}, {"display": "Rhode Island", "folder": "rhode_island", "value": "rhode_island"}, {"display": "South Carolina", "folder": "south_carolina", "value": "south_carolina"}, {"display": "South Dakota", "folder": "south_dakota", "value": "south_dakota"}, {"display": "Tennessee", "folder": "tennessee", "value": "tennessee"}, {"display": "Texas", "folder": "texas", "value": "texas"}, {"display": "Utah", "folder": "utah", "value": "utah"}, {"display": "Vermont", "folder": "vermont", "value": "vermont"}, {"display": "Virginia", "folder": "virginia", "value": "virginia"}, {"display": "Washington", "folder": "washington", "value": "washington"}, {"display": "West Virginia", "folder": "west_virginia", "value": "west_virginia"}, {"display": "Wisconsin", "folder": "wisconsin", "value": "wisconsin"}, {"display": "Wyoming", "folder": "wyoming", "value": "wyoming"}];
-    // Fallback hardcoded list if context absent
-    if (!STATES || STATES.length === 0) {
-      STATES = [
-        {value:"alabama",display:"Alabama"},{value:"alaska",display:"Alaska"},{value:"arizona",display:"Arizona"},
-        {value:"arkansas",display:"Arkansas"},{value:"california",display:"California"},{value:"colorado",display:"Colorado"},
-        {value:"connecticut",display:"Connecticut"},{value:"delaware",display:"Delaware"},{value:"florida",display:"Florida"},
-        {value:"georgia",display:"Georgia"},{value:"hawaii",display:"Hawaii"},{value:"idaho",display:"Idaho"},
-        {value:"illinois",display:"Illinois"},{value:"indiana",display:"Indiana"},{value:"iowa",display:"Iowa"},
-        {value:"kansas",display:"Kansas"},{value:"kentucky",display:"Kentucky"},{value:"louisiana",display:"Louisiana"},
-        {value:"maine",display:"Maine"},{value:"maryland",display:"Maryland"},{value:"massachusetts",display:"Massachusetts"},
-        {value:"michigan",display:"Michigan"},{value:"minnesota",display:"Minnesota"},{value:"mississippi",display:"Mississippi"},
-        {value:"missouri",display:"Missouri"},{value:"montana",display:"Montana"},{value:"nebraska",display:"Nebraska"},
-        {value:"nevada",display:"Nevada"},{value:"new_hampshire",display:"New Hampshire"},{value:"new_jersey",display:"New Jersey"},
-        {value:"new_mexico",display:"New Mexico"},{value:"new_york",display:"New York"},{value:"north_carolina",display:"North Carolina"},
-        {value:"north_dakota",display:"North Dakota"},{value:"ohio",display:"Ohio"},{value:"oklahoma",display:"Oklahoma"},
-        {value:"oregon",display:"Oregon"},{value:"pennsylvania",display:"Pennsylvania"},{value:"rhode_island",display:"Rhode Island"},
-        {value:"south_carolina",display:"South Carolina"},{value:"south_dakota",display:"South Dakota"},{value:"tennessee",display:"Tennessee"},
-        {value:"texas",display:"Texas"},{value:"utah",display:"Utah"},{value:"vermont",display:"Vermont"},
-        {value:"virginia",display:"Virginia"},{value:"washington",display:"Washington"},{value:"west_virginia",display:"West Virginia"},
-        {value:"wisconsin",display:"Wisconsin"},{value:"wyoming",display:"Wyoming"}
-      ];
-    }
-
-    var list = document.getElementById('state-list');
-    var totalCount = document.getElementById('total-count');
-    if (totalCount) totalCount.textContent = STATES.length;
-
-    STATES.forEach(function(s){
-      var value = (typeof s === 'string') ? s : s.value;
-      var label = (typeof s === 'string')
-        ? s.split('_').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join(' ')
-        : (s.display || value);
-      var el = document.createElement('label');
-      el.className = 'state-opt';
-      el.innerHTML = '<input type="checkbox" name="region" value="'+value+'"> <span>'+label+'</span>';
-      list.appendChild(el);
-    });
-
-    var modeEntire = document.getElementById('mode-entire');
-    var modeSelect = document.getElementById('mode-select');
-    var container = document.getElementById('states-container');
-    var areaOpts = document.querySelectorAll('.area-opt');
-    var selectedCount = document.getElementById('selected-count');
-
-    function updateMode(){
-      var isEntire = modeEntire.checked;
-      container.style.display = isEntire ? 'none' : 'block';
-      areaOpts.forEach(function(o){
-        o.classList.toggle('sel', o.dataset.mode === (isEntire ? 'entire' : 'select'));
-      });
-      if(isEntire){
-        document.querySelectorAll('input[name="region"]').forEach(function(cb){cb.checked=false;});
-        updateCount();
-      }
-    }
-    modeEntire.addEventListener('change', updateMode);
-    modeSelect.addEventListener('change', updateMode);
-    areaOpts.forEach(function(opt){
-      opt.addEventListener('click', function(){
-        var r = opt.querySelector('input[type="radio"]');
-        r.checked = true;
-        r.dispatchEvent(new Event('change'));
-      });
-    });
-
-    function updateCount(){
-      var n = document.querySelectorAll('input[name="region"]:checked').length;
-      selectedCount.textContent = n === 0 ? 'None selected' : (n + (n===1?' state selected':' states selected'));
-    }
-    document.addEventListener('change', function(e){
-      if(e.target && e.target.name === 'region') updateCount();
-    });
-
-    var search = document.getElementById('state-search');
-    search.addEventListener('input', function(){
-      var q = this.value.toLowerCase();
-      document.querySelectorAll('.state-opt').forEach(function(o){
-        var t = o.querySelector('span').textContent.toLowerCase();
-        o.style.display = t.indexOf(q) >= 0 ? '' : 'none';
-      });
-    });
-
-    var cards = document.querySelectorAll('.view-card');
-    var familyButtons = document.querySelectorAll('.map-family');
-    var familyCount = document.getElementById('family-count');
-    var selTitle = document.getElementById('selected-title');
-    var selSub = document.getElementById('selected-sub');
-    var submitNote = document.getElementById('submit-note');
-    var form = document.getElementById('main-form');
-
-    function selectFamily(family, preferredCard){
-      var visible = [];
-      familyButtons.forEach(function(button){
-        var active = button.dataset.mapFamily === family;
-        button.classList.toggle('sel', active);
-        button.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-      cards.forEach(function(card){
-        var show = card.dataset.family === family;
-        card.hidden = !show;
-        if(show) visible.push(card);
-      });
-      familyCount.textContent = String(visible.length).padStart(2, '0') + ' views';
-      if(preferredCard && preferredCard.dataset.family === family) selectCard(preferredCard);
-      else if(visible.length) selectCard(visible[0]);
-    }
-
-    function selectCard(c){
-      cards.forEach(function(x){x.classList.remove('sel');});
-      c.classList.add('sel');
-      c.querySelector('input[type="radio"]').checked = true;
-      selTitle.textContent = c.querySelector('.vt').textContent;
-      selSub.textContent = c.querySelector('.vd').textContent;
-      submitNote.textContent = c.querySelector('.plate span').textContent + ' · ' + c.querySelector('.vt').textContent;
-      form.action = c.dataset.target;
-    }
-    cards.forEach(function(c){
-      c.addEventListener('click', function(){ selectCard(c); });
-    });
-    familyButtons.forEach(function(button){
-      button.addEventListener('click', function(){ selectFamily(button.dataset.mapFamily); });
-    });
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var picked = document.querySelector('.view-card.sel');
-      var target = picked.dataset.target;
-      var params = new URLSearchParams();
-      params.set('mode', modeEntire.checked ? 'entire' : 'select');
-      params.set('view_type', picked.dataset.value);
-      if(!modeEntire.checked){
-        document.querySelectorAll('input[name="region"]:checked').forEach(function(cb){
-          params.append('region', cb.value);
-        });
-      }
-      window.location.href = target + '?' + params.toString();
-    });
-
-    var urlVt = new URLSearchParams(window.location.search).get('view_type');
-    if(urlVt){
-      var match = document.querySelector('.view-card[data-value="'+urlVt+'"]');
-      if(match) selectFamily(match.dataset.family, match);
-    }
-  })();
-  </script>
-
-    <script>
-    // Static site: override view toggle to navigate to correct HTML file
-    (function() {
-        var viewMap = {
-            'btn-heatmap': 'map_heatmap.html',
-            'btn-hazard': 'map_hazard.html',
-            'btn-impact': 'map_impact.html',
-            'btn-energy-vulnerability': 'map_energy_vulnerability.html',
-            'btn-exposure': 'map_exposure.html',
-            'btn-energy-detail': 'map_energy_detail.html',
-            'btn-social-vulnerability': 'map_social_vulnerability.html',
-            'btn-analytics': 'map_analytics.html'
-        };
-        Object.keys(viewMap).forEach(function(btnId) {
-            var btn = document.getElementById(btnId);
-            if (btn) {
-                // Remove ALL existing click listeners by cloning
-                var newBtn = btn.cloneNode(true);
-                btn.parentNode.replaceChild(newBtn, btn);
-                // Add static site navigation
-                newBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var url = new URL(window.location);
-                    var params = new URLSearchParams(url.search);
-                    // Keep region and mode params, remove view-specific ones
-                    var keep = ['region', 'mode', 'division_type', 'show_background'];
-                    var newParams = new URLSearchParams();
-                    keep.forEach(function(k) {
-                        params.getAll(k).forEach(function(v) { newParams.append(k, v); });
-                    });
-                    window.location.href = viewMap[btnId] + '?' + newParams.toString();
-                });
-            }
-        });
-    })();
-    </script>
-    
+  </section>
+  <section class="content-section acknowledgment-note" id="acknowledgments" aria-label="Acknowledgments">
+    <h2>Acknowledgments</h2>
+    <p>We thank the Ohio Supercomputer Center (OSC) for its support. This research was supported in part by the Cross Disciplinary Integration Grant (CDIG) from the College of Architecture and Environmental Design at Kent State University.</p>
+  </section>
+</main>
+<footer class="atlas-footer">
+  <div class="footer-credits">
+    <p class="footer-copyright">© 2026 Energy Infrastructure Exposure Atlas</p>
+  </div>
+  <nav aria-label="Footer navigation">
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>
+  </nav>
+</footer>
 </body>
 </html>

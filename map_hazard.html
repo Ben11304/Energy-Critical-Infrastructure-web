@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>US Map - State (Hazard)</title>
     <style>
@@ -104,27 +105,17 @@
     
     
 
+<link rel="stylesheet" href="static/css/site.css?v=20261107-refined">
 </head>
-<body>
+<body class="atlas-map-page">
     <!-- Header -->
-    <header class="main-header">
-        <div class="header-left">
-            <div>
-                <div class="header-title">Energy Critical Infrastructure</div>
-                <div class="header-subtitle">Geographic Information System</div>
-            </div>
-        </div>
-        <nav class="footer-links" aria-label="Primary navigation">
-            <a href="index.html">Maps</a>
-            <a href="data-sources.html">Sources</a>
-        </nav>
-    </header>
+    <header class="atlas-header"><a class="atlas-brand" href="index.html">Energy Infrastructure Exposure Atlas</a><nav aria-label="Primary navigation"><a href="index.html">Home</a><a href="map.html" aria-current="page">Maps</a><a href="research.html">The Study</a><a href="data-sources.html">Data sources</a></nav></header>
     
     <!-- Main Content -->
     <main class="main-content">
         
     
-    <a href="index.html" class="back-button">← Back to Home</a>
+    <a href="map.html" class="back-button">← Choose a map</a>
     
     <!-- Panel Toggle Button -->
     <button id="panel-toggle" class="panel-toggle-btn">
@@ -325,13 +316,14 @@ function setGlobalLoadingError(message) {
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-links">
-            <a href="data-sources.html">Data Sources</a>
-            <a href="https://github.com/ruoxinx/energy-infrastructure-risk" target="_blank" rel="noopener">GitHub</a>
-        </div>
-        <div>&copy; 2026 Energy Critical Infrastructure &middot; <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></div>
-    </footer>
+    <footer class="atlas-footer">
+  <div class="footer-credits">
+    <p class="footer-copyright">© 2026 Energy Infrastructure Exposure Atlas</p>
+  </div>
+  <nav aria-label="Footer navigation">
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>
+  </nav>
+</footer>
 
     
     <!-- Custom JavaScript -->

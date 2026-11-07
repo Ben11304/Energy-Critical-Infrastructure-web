@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Map Index · Energy Critical Infrastructure</title>
+  <title>Maps ? Energy Infrastructure Exposure Atlas</title>
   <link rel="stylesheet" href="./static/css/atlas-b.css?v=20260604-b">
+<link rel="stylesheet" href="static/css/site.css?v=20261107-refined">
 </head>
 <body class="map-index">
 
-  <header class="hdr">
-    <div class="brand">
-      <div class="nm">Energy Critical Infrastructure</div>
-    </div>
-    <nav class="nav">
-      <a href="index.html" class="active">Maps</a>
-      <a href="data-sources.html">Sources</a>
-      <a href="https://github.com/ruoxinx/energy-infrastructure-risk" target="_blank" rel="noopener">Repository</a>
-    </nav>
-    <a href="#console" class="cta">Select a map ↓</a>
-  </header>
+  <header class="atlas-header">
+<a class="atlas-brand" href="index.html">Energy Infrastructure Exposure Atlas</a>
+<nav aria-label="Primary navigation">
+<a href="index.html">Home</a>
+<a href="map.html" aria-current="page">Maps</a>
+<a href="research.html">The Study</a>
+<a href="data-sources.html">Data sources</a>
+</nav>
+</header>
 
   <section id="console">
     <form action="map_hazard.html" id="main-form" method="GET">
@@ -27,19 +26,15 @@
         <!-- MAP FAMILY -->
         <div class="col-family">
           <div class="col-head">
-            <span>I · Research family</span>
-            <span class="req">required</span>
+            <span>Category</span>
           </div>
 
           <div class="map-families" role="tablist" aria-label="Analytical map families">
-            <button type="button" class="map-family sel" role="tab" aria-selected="true" data-map-family="hazard">
-              <span class="family-code">01</span><span><b>Hazard</b><small>Hazard surfaces and asset exposure</small></span><span>→</span>
+            <button type="button" class="map-family sel" role="tab" aria-selected="true" data-map-family="hazard"><span><b>Hazard</b><small>Hazard surfaces and asset exposure</small></span><span>→</span>
             </button>
-            <button type="button" class="map-family" role="tab" aria-selected="false" data-map-family="infrastructure">
-              <span class="family-code">02</span><span><b>Infrastructure</b><small>Asset distribution and network vulnerability</small></span><span>→</span>
+            <button type="button" class="map-family" role="tab" aria-selected="false" data-map-family="infrastructure"><span><b>Infrastructure</b><small>Asset distribution and network vulnerability</small></span><span>→</span>
             </button>
-            <button type="button" class="map-family" role="tab" aria-selected="false" data-map-family="socioeconomic">
-              <span class="family-code">03</span><span><b>Socioeconomic &amp; outcomes</b><small>Social vulnerability, outages, and analytics</small></span><span>→</span>
+            <button type="button" class="map-family" role="tab" aria-selected="false" data-map-family="socioeconomic"><span><b>Socioeconomic &amp; outcomes</b><small>Social vulnerability, outages, and analytics</small></span><span>→</span>
             </button>
           </div>
         </div>
@@ -47,42 +42,41 @@
         <!-- VIEW TYPE -->
         <div class="col-view">
           <div class="col-head">
-            <span>II · Analytical view</span>
-            <span id="family-count">03 views</span>
+            <span>Map</span>
           </div>
 
           <div class="views-grid" id="views-grid">
             <label class="view-card sel" data-family="hazard" data-value="hazard" data-target="map_hazard.html">
               <input type="radio" name="view_type" value="hazard" checked>
-              <div class="plate"><span>View 01</span><span class="sel-mark">selected</span></div><div class="vt">Hazard layers</div><div class="vd">Examine modeled hazard intensity and extent.</div>
+              <div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Hazard layers</div><div class="vd">Examine modeled hazard intensity and extent.</div>
             </label>
             <label class="view-card" data-family="hazard" data-value="exposure" data-target="map_exposure.html">
-              <input type="radio" name="view_type" value="exposure"><div class="plate"><span>View 02</span><span class="sel-mark">selected</span></div><div class="vt">Asset exposure</div><div class="vd">Identify assets meeting hazard exposure criteria.</div>
+              <input type="radio" name="view_type" value="exposure"><div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Asset exposure</div><div class="vd">Identify assets meeting hazard exposure criteria.</div>
             </label>
             <label class="view-card" data-family="hazard" data-value="heatmap" data-target="map_heatmap.html">
-              <input type="radio" name="view_type" value="heatmap"><div class="plate"><span>View 03</span><span class="sel-mark">selected</span></div><div class="vt">Infrastructure density</div><div class="vd">Inspect spatial concentration of energy assets.</div>
+              <input type="radio" name="view_type" value="heatmap"><div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Infrastructure density</div><div class="vd">Inspect spatial concentration of energy assets.</div>
             </label>
             <label class="view-card" hidden data-family="infrastructure" data-value="energy_detail" data-target="map_energy_detail.html">
-              <input type="radio" name="view_type" value="energy_detail"><div class="plate"><span>View 04</span><span class="sel-mark">selected</span></div><div class="vt">Energy asset atlas</div><div class="vd">Inspect infrastructure type, sector, and location.</div>
+              <input type="radio" name="view_type" value="energy_detail"><div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Energy asset atlas</div><div class="vd">Inspect infrastructure type, sector, and location.</div>
             </label>
             <label class="view-card" hidden data-family="infrastructure" data-value="energy_vulnerability" data-target="map_energy_vulnerability.html">
-              <input type="radio" name="view_type" value="energy_vulnerability"><div class="plate"><span>View 05</span><span class="sel-mark">selected</span></div><div class="vt">Network vulnerability</div><div class="vd">Examine node-level network criticality.</div>
+              <input type="radio" name="view_type" value="energy_vulnerability"><div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Network vulnerability</div><div class="vd">Examine node-level network criticality.</div>
             </label>
             <label class="view-card" hidden data-family="socioeconomic" data-value="social_vulnerability" data-target="map_social_vulnerability.html">
-              <input type="radio" name="view_type" value="social_vulnerability"><div class="plate"><span>View 06</span><span class="sel-mark">selected</span></div><div class="vt">Social vulnerability</div><div class="vd">Compare county-level CDC/ATSDR SVI metrics.</div>
+              <input type="radio" name="view_type" value="social_vulnerability"><div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Social vulnerability</div><div class="vd">Compare county-level CDC/ATSDR SVI metrics.</div>
             </label>
             <label class="view-card" hidden data-family="socioeconomic" data-value="impact" data-target="map_impact.html">
-              <input type="radio" name="view_type" value="impact"><div class="plate"><span>View 07</span><span class="sel-mark">selected</span></div><div class="vt">Power outage outcomes</div><div class="vd">Inspect observed county-level outage records.</div>
+              <input type="radio" name="view_type" value="impact"><div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Power outage outcomes</div><div class="vd">Inspect observed county-level outage records.</div>
             </label>
             <label class="view-card" hidden data-family="socioeconomic" data-value="analytics" data-target="map_analytics.html">
-              <input type="radio" name="view_type" value="analytics"><div class="plate"><span>View 08</span><span class="sel-mark">selected</span></div><div class="vt">Analytical results</div><div class="vd">Review aggregate statistical outputs and sensitivity.</div>
+              <input type="radio" name="view_type" value="analytics"><div class="plate"><span class="sel-mark">selected</span></div><div class="vt">Analytical results</div><div class="vd">Review aggregate statistical outputs and sensitivity.</div>
             </label>
           </div>
         </div>
 
         <!-- AREA + SUBMIT -->
         <div class="col-area">
-          <div class="col-head"><span>III · Geographic scope</span><span class="req">required</span></div>
+          <div class="col-head"><span>Area</span></div>
 
           <div class="area-opts" id="area-opts">
             <label class="area-opt sel" data-mode="entire">
@@ -100,7 +94,7 @@
           </div>
 
           <div class="state-picker" id="states-container" style="display:none;">
-            <input type="text" id="state-search" placeholder="Search states…" autocomplete="off">
+            <input aria-label="Search states" type="text" id="state-search" placeholder="Search states…" autocomplete="off">
             <div class="state-list" id="state-list"></div>
             <div class="state-count">
               <span id="selected-count">None selected</span>
@@ -112,25 +106,19 @@
         <!-- SUBMIT -->
         <div class="col-config">
           <div class="col-head">
-            <span>IV · Render</span>
-            <span class="req">ready</span>
+            <span>Open map</span>
           </div>
 
           <div class="config-panel">
             <div class="detail-opts active">
               <h3 id="selected-title">Hazard layers</h3>
-              <div class="sub" id="selected-sub">Examine modeled hazard intensity and extent.</div>
 
-              <div class="config-note">
-                Additional filters — sector, hazard type, asset types, color scale — are available on each map's side panel after it loads.
-              </div>
-
+              <p id="area-error" role="alert" hidden>Select at least one state, or choose Entire United States.</p>
               <div class="submit-row">
                 <button type="submit" class="submit-btn">
-                  <span>Render the map</span>
+                  <span>Open map</span>
                   <span class="arrow">→</span>
                 </button>
-                <div class="submit-note" id="submit-note">View 01 · Hazard layers</div>
               </div>
             </div>
           </div>
@@ -140,15 +128,14 @@
     </form>
   </section>
 
-  <footer class="foot">
-    <div>© 2026 ENERGY CRITICAL INFRASTRUCTURE · KENT STATE UNIVERSITY</div>
-    <div class="links">
-      <a href="index.html">Maps</a>
-      <a href="data-sources.html">Full citations</a>
-      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>
-      <a href="https://github.com/ruoxinx/energy-infrastructure-risk" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </footer>
+  <footer class="atlas-footer">
+  <div class="footer-credits">
+    <p class="footer-copyright">© 2026 Energy Infrastructure Exposure Atlas</p>
+  </div>
+  <nav aria-label="Footer navigation">
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>
+  </nav>
+</footer>
 
   <script>
   (function(){
@@ -238,10 +225,7 @@
 
     var cards = document.querySelectorAll('.view-card');
     var familyButtons = document.querySelectorAll('.map-family');
-    var familyCount = document.getElementById('family-count');
     var selTitle = document.getElementById('selected-title');
-    var selSub = document.getElementById('selected-sub');
-    var submitNote = document.getElementById('submit-note');
     var form = document.getElementById('main-form');
 
     function selectFamily(family, preferredCard){
@@ -256,7 +240,6 @@
         card.hidden = !show;
         if(show) visible.push(card);
       });
-      familyCount.textContent = String(visible.length).padStart(2, '0') + ' views';
       if(preferredCard && preferredCard.dataset.family === family) selectCard(preferredCard);
       else if(visible.length) selectCard(visible[0]);
     }
@@ -266,20 +249,25 @@
       c.classList.add('sel');
       c.querySelector('input[type="radio"]').checked = true;
       selTitle.textContent = c.querySelector('.vt').textContent;
-      selSub.textContent = c.querySelector('.vd').textContent;
-      submitNote.textContent = c.querySelector('.plate span').textContent + ' · ' + c.querySelector('.vt').textContent;
       form.action = c.dataset.target;
     }
     cards.forEach(function(c){
       c.addEventListener('click', function(){ selectCard(c); });
+      c.querySelector('input').addEventListener('change', function(){ selectCard(c); });
     });
     familyButtons.forEach(function(button){
       button.addEventListener('click', function(){ selectFamily(button.dataset.mapFamily); });
     });
 
+    form.addEventListener('change', function(){ document.getElementById('area-error').hidden = true; });
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var picked = document.querySelector('.view-card.sel');
+      if (!modeEntire.checked && !document.querySelector('input[name="region"]:checked')) {
+        document.getElementById('area-error').hidden = false;
+        document.getElementById('state-search').focus();
+        return;
+      }
+      var picked = document.querySelector('.view-card input:checked').closest('.view-card');
       var target = picked.dataset.target;
       var params = new URLSearchParams();
       params.set('mode', modeEntire.checked ? 'entire' : 'select');
@@ -294,7 +282,7 @@
 
     var urlVt = new URLSearchParams(window.location.search).get('view_type');
     if(urlVt){
-      var match = document.querySelector('.view-card[data-value="'+urlVt+'"]');
+      var match = Array.from(cards).find(function(card){ return card.dataset.value === urlVt; });
       if(match) selectFamily(match.dataset.family, match);
     }
   })();
